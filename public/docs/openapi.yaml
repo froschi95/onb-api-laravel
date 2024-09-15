@@ -1,0 +1,295 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/v1/register:
+    post:
+      summary: 'Register New User and store in the db'
+      operationId: registerNewUserAndStoreInTheDb
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 150 characters.'
+                  example: ubvyijcohmqmbrmtokm
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: bert87@example.com
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters. Must not be greater than 50 characters.'
+                  example: '\O!${R~4!.>ZZ{#C'
+                phone_number:
+                  type: string
+                  description: 'Must be 10 digits.'
+                  example: '3324601497'
+              required:
+                - name
+                - email
+                - password
+                - phone_number
+  /api/v1/login:
+    post:
+      summary: 'Login a user'
+      operationId: loginAUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: jace51@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: laudantium
+              required:
+                - email
+                - password
+  /api/v1:
+    get:
+      summary: ''
+      operationId: getApiV1
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+  /api/v1/accounts:
+    get:
+      summary: ''
+      operationId: getApiV1Accounts
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+    post:
+      summary: ''
+      operationId: postApiV1Accounts
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_type:
+                  type: string
+                  description: ''
+                  example: facere
+              required:
+                - account_type
+  '/api/v1/account/{account}':
+    get:
+      summary: ''
+      operationId: getApiV1AccountAccount
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: account
+        description: 'The account.'
+        example: non
+        required: true
+        schema:
+          type: string
+  /api/v1/transfer:
+    post:
+      summary: 'Handle transfers between accounts'
+      operationId: handleTransfersBetweenAccounts
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from_account_number:
+                  type: string
+                  description: ''
+                  example: dolorem
+                to_account_number:
+                  type: string
+                  description: ''
+                  example: quo
+                amount:
+                  type: number
+                  description: 'Must be at least 1.00.'
+                  example: 60
+              required:
+                - from_account_number
+                - to_account_number
+                - amount
+  /api/v1/deposit:
+    post:
+      summary: 'Handle Deposit transactions'
+      operationId: handleDepositTransactions
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to_account_number:
+                  type: string
+                  description: ''
+                  example: suscipit
+                amount:
+                  type: number
+                  description: 'Must be at least 1.00.'
+                  example: 21
+              required:
+                - to_account_number
+                - amount
+  /api/v1/withdraw:
+    post:
+      summary: 'Handle a withdrawal'
+      operationId: handleAWithdrawal
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from_account_number:
+                  type: string
+                  description: ''
+                  example: eum
+                amount:
+                  type: number
+                  description: 'Must be at least 1.00.'
+                  example: 15
+              required:
+                - from_account_number
+                - amount
+  /api/v1/user:
+    get:
+      summary: ''
+      operationId: getApiV1User
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+  /api/v1/logout:
+    post:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
